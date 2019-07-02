@@ -5,10 +5,16 @@ PROMPT="%F{green}[%n %c]$%f"
 autoload -Uz vcs_info
 setopt prompt_subst
 zstyle ':vcs_info:git:*' check-for-changes true
-zstyle ':vcs_info:git:*' formats "%F{yellow}[%b]%f"
+zstyle ':vcs_info:git:*' stagedstr "+"
+zstyle ':vcs_info:git:*' unstagedstr "-"
+zstyle ':vcs_info:git:*' formats "%c%u[%b]"
 zstyle ':vcs_info:git:*' actionformats "[%b|%a]"
-precmd () { vcs_info }
-RPROMPT="${vcs_info_msg_0_}"
+precmd () {
+    psvar=()
+    LANG=en_US.UTF-8 vcs_info
+    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+}
+RPROMPT="%1(v|%F{yellow}%1v%f|)"
 
 #rbenv
 eval "$(rbenv init -)"
