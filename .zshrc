@@ -10,13 +10,12 @@ zstyle ':vcs_info:git:*' unstagedstr "+"
 zstyle ':vcs_info:*' formats "%F{yellow}%c%u[%b]%f"
 zstyle ':vcs_info:*' actionformats "[%b|%a]"
 precmd () { vcs_info }
-RPROMPT="${vcs_info_msg_0_}"
+RPROMPT=$RPROMPT"${vcs_info_msg_0_}"
 
 #rbenv
 eval "$(rbenv init -)"
 
 alias e='emacs'
-
 #ls
 case "${OSTYPE}" in
 freebsd*|darwin*)
@@ -56,6 +55,5 @@ bindkey "^S" history-incremental-search-forward
 stty -ixon
 
 #サジェスト
-
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=cyan'
