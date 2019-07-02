@@ -1,0 +1,13 @@
+# This is Git's per-user configuration file.
+[user]
+	name = sushinohii
+	email = sushinohii@users.noreply.github.com
+[core]
+	editor = emacs
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[alias]
+	st = status
+	co = checkout
